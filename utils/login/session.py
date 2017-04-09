@@ -101,7 +101,7 @@ class Session(object):
         return self.raw_session.head(*args, **kwargs)
 
     def refresh(self):
-        self.raw_session = self._login()
+        self._login()
         self.head(self.CHECK_URL)
 
     def select_course(self, bsid, asp_dict):
