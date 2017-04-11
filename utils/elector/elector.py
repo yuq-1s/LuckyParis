@@ -60,10 +60,6 @@ class SummerElector(object):
         return self.session.get(submit_response.url)
 
     def select_course_by_bsid(self, bsid):
-        ''' 给定bsid，持续选，直到成功。
-            什么情况都不报错。
-            课满了不报错，session或者__VIEWSTATE过期了更新一下继续刷，也不报错
-        '''
         self._select_course_by_bsid(bsid)
         if self.URL in self._submit().url:
             logger.info('%s submit success' % bsid)
