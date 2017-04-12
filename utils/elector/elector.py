@@ -1,8 +1,8 @@
 from ..login.session import SummerSession
 from ..spider.parsers import SummerParser
 # TODO: use relative import here
-from ...settings import (SUMMER_SUBMIT_URL, SELECT_SUMMER_COURSE_URL,
-                      SUMMER_URL, TONGSHI_NAMES)
+from ..settings import (SUMMER_SUBMIT_URL, SELECT_SUMMER_COURSE_URL,
+                        COURSE_DATA_PATH, SUMMER_URL, TONGSHI_NAMES)
 
 from time import sleep
 import re
@@ -41,7 +41,7 @@ class SummerElector(object):
     def _load_db(self):
         ''' 加载课程数据
         '''
-        with open('/tmp/course.json', 'r') as f:
+        with open(COURSE_DATA_PATH, 'r') as f:
             self.db = json.load(f)
 
     def grab_course_by_cid(self, cid):
