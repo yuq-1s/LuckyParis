@@ -1,5 +1,5 @@
 # factory
-from .settings import (SELECT_COURSE_URL, NORMAL_CHECK_URL_TEMPLATE,
+from ..settings import (SELECT_SUMMER_COURSE_URL, NORMAL_CHECK_URL_TEMPLATE,
                        ELE_LOGIN_URL, SUMMER_CHECK_URL_TEMPLATE, JACCOUNT_URL,
                        CACHE_SESSION_PATH)
 
@@ -26,7 +26,7 @@ class Session(object):
     def __init__(self, username, password):
         self.username = username
         self.password = password
-        self.refresh()
+        self._refresh()
         logger.debug("Session object initialization complete.")
 
     def _login(self):
@@ -112,6 +112,9 @@ class Session(object):
             os.remove(CACHE_SESSION_PATH)
         except FileNotFoundError:
             pass
+        self._refresh()
+
+    def _refresh(self):
         self._login()
         self.head(self.CHECK_URL)
 
