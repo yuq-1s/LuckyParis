@@ -59,47 +59,7 @@ class Spider(object, metaclass=ABCMeta):
     def crawl(self):
         ''' 爬所有课程信息，
             @params course_id: 课程代码，比如AD001
-            @return 一个课程信息生成器
-
-            数据格式:
-            [key]                       [value_type]
-
-            bsid                        int
-            name                        str             # 课程名称
-            cid                         str             # 课程代码, 如'CS101'
-            teacher                     str             # 教师姓名
-            teacher_job                 str             # 职称
-            remark                      str             # 备注
-            type                        str             # 课程类型, 取值为
-                                                        ['', # 表示任选课
-                                                        '人文学科',
-                                                        '社会科学',
-                                                        '数学与逻辑',
-                                                        '自然科学与']
-            credit                      str             # 学分 如'2.0'
-            hours                       int             # 学时
-            max_member                  int
-            min_member                  int
-            now_member                  int             # 确定人数
-            time                        list of dicts with the following keys:
-                [key]                       [value_type]
-
-                'day'                       int         # 星期几, 0表示星期日
-                'cbegin'                    int         # 第几节课开始
-                'cend'                      int         # 第几节课结束
-                'wbegin'                    int         # 第几周开始
-                'wend'                      int         # 第几周结束
-                'place'                     str         # 上课地点
-                'parity'                    str         # 单双周, 取值为
-                                                        ['both', 'odd', 'even']
-            asp                         dict with the following keys:
-                '__VIEWSTATE'               str
-                '__VIEWSTATEGENERATOR'      str
-                '__EVENTVALIDATION'         str
-
-            注: cbegin, cend, wbegin, wend 本应该是int, 但现在是str,
-                比如本应该是6, 现在是'6'
-                下一个commit我会改一下
+            @return 一个课程信息生成器, 数据格式见wiki
         '''
         pass
 
